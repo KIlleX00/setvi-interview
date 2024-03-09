@@ -29,6 +29,7 @@
 		CC82459B2B9CB76B00E20926 /* RepositoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC82459A2B9CB76B00E20926 /* RepositoryListViewModel.swift */; };
 		CC82459E2B9CB7E300E20926 /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC82459D2B9CB7E300E20926 /* RepositoryListView.swift */; };
 		CC8245A02B9CB84F00E20926 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC82459F2B9CB84F00E20926 /* UserDetailsView.swift */; };
+		CCCFFC8A2B9D0D3B00833465 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCFFC892B9D0D3B00833465 /* CachedAsyncImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		CC82459A2B9CB76B00E20926 /* RepositoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewModel.swift; sourceTree = "<group>"; };
 		CC82459D2B9CB7E300E20926 /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
 		CC82459F2B9CB84F00E20926 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
+		CCCFFC892B9D0D3B00833465 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			children = (
 				CC82458D2B9C90E600E20926 /* EmptyStateView.swift */,
 				CC8245912B9C9A1500E20926 /* UserAvatarView.swift */,
+				CCCFFC892B9D0D3B00833465 /* CachedAsyncImage.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				CC5409A32B9CC4CA00B6AD78 /* RepositoryItemView.swift in Sources */,
 				CC8245842B9C8AEC00E20926 /* UserListViewModel.swift in Sources */,
 				CC8245902B9C99A000E20926 /* UserItemView.swift in Sources */,
+				CCCFFC8A2B9D0D3B00833465 /* CachedAsyncImage.swift in Sources */,
 				CC5409AB2B9CD85700B6AD78 /* CommitListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

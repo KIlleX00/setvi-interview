@@ -10,17 +10,16 @@ struct UserAvatarView: View {
     let width: Double
     
     var body: some View {
-        AsyncImage(url: userItem.avatarUrl(for: width, scale: scale)) { image in
+        CachedAsyncImage(url: userItem.avatarUrl(for: width, scale: scale)) { image in
             image
                 .resizable()
                 .scaledToFill()
-                .frame(width: width, height: width)
         } placeholder: {
             Image(systemName: "person.circle.fill")
                 .resizable()
                 .foregroundColor(.gray)
-                .frame(width: width, height: width)
-        }.clipShape(Circle())
+        }.frame(width: width, height: width)
+            .clipShape(Circle())
             .overlay(Circle().stroke(.gray, lineWidth: 1))
     }
 }
