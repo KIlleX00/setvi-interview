@@ -3,6 +3,7 @@ import SwiftUI
 /// A view for displaying a list of users.
 struct UserListView: View {
     @StateObject var viewModel: UserListViewModel
+    @State var isAuthTokenInputPresented = false
     
     var body: some View {
         List {
@@ -38,6 +39,17 @@ struct UserListView: View {
             .navigationDestination(for: UserItem.self, destination: { userItem in
                 RepositoryListView(viewModel: viewModel.repositoryListViewModel(for: userItem))
             }).alert(viewModel: viewModel.alertViewModel)
+            .toolbar(content: {
+                Button {
+                    isAuthTokenInputPresented = true
+                } label: {
+                    Image(systemName: "key.icloud.fill")
+                }
+
+            })
+            .sheet(isPresented: $isAuthTokenInputPresented, content: {
+                AuthTokenInputView()
+            })
             .animation(.easeIn, value: viewModel.users)
     }
 }

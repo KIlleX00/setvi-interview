@@ -30,6 +30,9 @@
 		CC82459E2B9CB7E300E20926 /* RepositoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC82459D2B9CB7E300E20926 /* RepositoryListView.swift */; };
 		CC8245A02B9CB84F00E20926 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC82459F2B9CB84F00E20926 /* UserDetailsView.swift */; };
 		CCCFFC8A2B9D0D3B00833465 /* CachedAsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCFFC892B9D0D3B00833465 /* CachedAsyncImage.swift */; };
+		CCCFFC8C2B9D1A2700833465 /* AuthTokenInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCFFC8B2B9D1A2700833465 /* AuthTokenInputViewModel.swift */; };
+		CCCFFC8E2B9D1A3600833465 /* AuthTokenInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCFFC8D2B9D1A3600833465 /* AuthTokenInputView.swift */; };
+		CCCFFC912B9D1CAF00833465 /* TokenStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCFFC902B9D1CAF00833465 /* TokenStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		CC82459D2B9CB7E300E20926 /* RepositoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListView.swift; sourceTree = "<group>"; };
 		CC82459F2B9CB84F00E20926 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		CCCFFC892B9D0D3B00833465 /* CachedAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedAsyncImage.swift; sourceTree = "<group>"; };
+		CCCFFC8B2B9D1A2700833465 /* AuthTokenInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenInputViewModel.swift; sourceTree = "<group>"; };
+		CCCFFC8D2B9D1A3600833465 /* AuthTokenInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenInputView.swift; sourceTree = "<group>"; };
+		CCCFFC902B9D1CAF00833465 /* TokenStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				CC8245832B9C8AEC00E20926 /* UserListViewModel.swift */,
+				CCCFFC8B2B9D1A2700833465 /* AuthTokenInputViewModel.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -179,6 +186,7 @@
 				CC82458A2B9C8BCD00E20926 /* UserListView.swift */,
 				CC82458F2B9C99A000E20926 /* UserItemView.swift */,
 				CC82459F2B9CB84F00E20926 /* UserDetailsView.swift */,
+				CCCFFC8D2B9D1A3600833465 /* AuthTokenInputView.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -186,6 +194,7 @@
 		CC8245852B9C8B7D00E20926 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CCCFFC8F2B9D1CA200833465 /* Data */,
 				CC8245962B9CAC4E00E20926 /* Modifiers */,
 				CC8245862B9C8B9000E20926 /* Extensions */,
 				CC5409A42B9CC9FF00B6AD78 /* Colors.swift */,
@@ -242,6 +251,14 @@
 				CC5409A22B9CC4C900B6AD78 /* RepositoryItemView.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		CCCFFC8F2B9D1CA200833465 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CCCFFC902B9D1CAF00833465 /* TokenStore.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,7 +333,9 @@
 			files = (
 				CC82458B2B9C8BCD00E20926 /* UserListView.swift in Sources */,
 				CC82459B2B9CB76B00E20926 /* RepositoryListViewModel.swift in Sources */,
+				CCCFFC8E2B9D1A3600833465 /* AuthTokenInputView.swift in Sources */,
 				CC82459E2B9CB7E300E20926 /* RepositoryListView.swift in Sources */,
+				CCCFFC8C2B9D1A2700833465 /* AuthTokenInputViewModel.swift in Sources */,
 				CC5409A92B9CD76D00B6AD78 /* CommitListViewModel.swift in Sources */,
 				CC5409A52B9CC9FF00B6AD78 /* Colors.swift in Sources */,
 				CC8245982B9CAC5C00E20926 /* AlertModifier.swift in Sources */,
@@ -329,6 +348,7 @@
 				CC8245792B9BC1DD00E20926 /* RestApi.swift in Sources */,
 				CC8245A02B9CB84F00E20926 /* UserDetailsView.swift in Sources */,
 				CC8245892B9C8BB200E20926 /* CombineExtensions.swift in Sources */,
+				CCCFFC912B9D1CAF00833465 /* TokenStore.swift in Sources */,
 				CC82457C2B9BC48F00E20926 /* GitHubApi.swift in Sources */,
 				CC5409A32B9CC4CA00B6AD78 /* RepositoryItemView.swift in Sources */,
 				CC8245842B9C8AEC00E20926 /* UserListViewModel.swift in Sources */,

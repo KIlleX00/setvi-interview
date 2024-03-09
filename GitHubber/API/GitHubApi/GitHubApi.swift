@@ -119,6 +119,9 @@ class GitHubRestApi: GitHubApi, RestApi {
         }
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
         urlRequest.setValue("application/vnd.github+json", forHTTPHeaderField: "Accept")
+        if let authorizationToken = TokenStore.shared.authorizationToken {
+            urlRequest.setValue("Bearer \(authorizationToken)", forHTTPHeaderField: "Authorization")
+        }
         
         return urlRequest
     }
