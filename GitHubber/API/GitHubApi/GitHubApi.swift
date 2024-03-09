@@ -154,6 +154,7 @@ class GitHubMockedApi: GitHubApi {
                                Organization(id: 5, login: "Amazon"),
                                Organization(id: 6, login: "Tesla"),
                                Organization(id: 7, login: "Facbook") ]
+    static let exampleCommit = CommitItem(sha: "e0ab8c4e18baf6679a65b325155923276b832687", commit: .init(message: "Commit 1\n\nSome additional info"), author: UserItem(id: 1, login: "Pera", avatarUrl: .init(string: "https://avatars.githubusercontent.com/u/11722390?v=4")!), committer: UserItem(id: 2, login: "Dule", avatarUrl: .init(string: "https://avatars.githubusercontent.com/u/11722390?v=4")!))
     
     func searchUsers(with query: String, pageSize: Int) async throws -> RestResponse<UsersSearchResponse, GitHubResponseHeaders> {
         let userItems = [ UserItem(id: 1, login: "Pera", avatarUrl: .init(string: "https://avatars.githubusercontent.com/u/11722390?v=4")!),

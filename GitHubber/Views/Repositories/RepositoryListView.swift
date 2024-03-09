@@ -32,7 +32,7 @@ struct RepositoryListView: View {
         }).navigationBarTitleDisplayMode(.inline)
             .navigationTitle(viewModel.user.login)
             .navigationDestination(for: RepositoryItem.self, destination: { repository in
-                Text(repository.name)
+                CommitListView(viewModel: viewModel.commitListViewModel(for: repository))
             }).alert(viewModel: viewModel.alertViewModel)
     }
 }

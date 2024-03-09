@@ -55,6 +55,12 @@ class RepositoryListViewModel: ObservableObject {
         
     }
     
+    // MARK: - Data source
+    
+    func commitListViewModel(for repository: RepositoryItem) -> CommitListViewModel {
+        CommitListViewModel(user: user, repository: repository, gitHubApi: gitHubApi)
+    }
+    
     // MARK: - Data fetch
     
     /// Fetches the first page of repositories and fetch organizatinos for current user..
