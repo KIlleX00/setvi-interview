@@ -44,7 +44,9 @@ struct CachedAsyncImage<Content: View, Placeholder: View>: View {
                 if let data = data, let image = UIImage(data: data) {
                     URLCache.shared.storeCachedResponse(CachedURLResponse(response: response!, data: data), for: request)
                     DispatchQueue.main.async {
-                        self.image = image
+                        withAnimation {
+                            self.image = image
+                        }
                     }
                 }
             }.resume()
