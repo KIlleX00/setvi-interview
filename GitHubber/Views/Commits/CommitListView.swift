@@ -18,6 +18,13 @@ struct CommitListView: View {
                                 viewModel.fetchNextPageIfNeeded(currentCommit: commit)
                             })
                     }
+                    if viewModel.isFetchingNextPage {
+                        HStack {
+                            Spacer()
+                            ProgressView().id(UUID())
+                            Spacer()
+                        }
+                    }
                 }
             }
         }.overlay(content: {

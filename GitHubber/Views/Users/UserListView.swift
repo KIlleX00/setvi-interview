@@ -5,13 +5,22 @@ struct UserListView: View {
     @StateObject var viewModel: UserListViewModel
     
     var body: some View {
-        List.init(viewModel.users) { user in
-            NavigationLink(value: user) {
-                UserItemView(userItem: user)
-            }.alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
-                .onAppear(perform: {
-                    viewModel.fetchNextPageIfNeeded(currentUser: user)
-                })
+        List {
+            ForEach(viewModel.users) { user in
+                NavigationLink(value: user) {
+                    UserItemView(userItem: user)
+                }.alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
+                    .onAppear(perform: {
+                        viewModel.fetchNextPageIfNeeded(currentUser: user)
+                    })
+            }
+            if viewModel.isFetchingNextPage {
+                HStack {
+                    Spacer()
+                    ProgressView().id(UUID())
+                    Spacer()
+                }
+            }
         }.overlay(content: {
             if !viewModel.isEmptyStateViewHidden {
                 EmptyStateView(image: Image(systemName: "doc.text.magnifyingglass"), title: viewModel.emptyStateTitle, description: viewModel.emptyStateDescription)

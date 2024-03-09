@@ -12,6 +12,8 @@ class RepositoryListViewModel: ObservableObject {
     @Published var organizations = [Organization]()
     /// A boolean value indicating whether the view model is currently fetching the first page of repositories.
     @Published var isFetchingFirstPage = false
+    /// A boolean value indicating whether the view model is currently fetching the next page of repositories.
+    @Published var isFetchingNextPage = false
     
     let user: UserItem
     
@@ -24,8 +26,6 @@ class RepositoryListViewModel: ObservableObject {
     
     /// The task responsible for fetching data. It's being used to cancel ongoing task if we need to fetch fresh data.
     private var fetchTask: Task<Void, Never>?
-    /// A boolean value indicating whether the view model is currently fetching the next page of repositories.
-    private var isFetchingNextPage = false
     
     /// The response containing repositories fetched from the GitHub API.
     private var repositoriesResponse: RestResponse<[RepositoryItem], GitHubResponseHeaders>?

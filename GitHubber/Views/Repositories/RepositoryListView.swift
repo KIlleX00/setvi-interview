@@ -21,6 +21,14 @@ struct RepositoryListView: View {
                             viewModel.fetchNextPageIfNeeded(currentRepository: repository)
                         })
                     }
+                    
+                    if viewModel.isFetchingNextPage {
+                        HStack {
+                            Spacer()
+                            ProgressView().id(UUID())
+                            Spacer()
+                        }
+                    }
                 }
             }
         }.overlay(content: {

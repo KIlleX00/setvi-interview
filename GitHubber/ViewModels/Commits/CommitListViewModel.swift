@@ -10,6 +10,8 @@ class CommitListViewModel: ObservableObject {
     @Published var commits = [CommitItem]()
     /// A boolean value indicating whether the view model is currently fetching the first page of commits.
     @Published var isFetchingFirstPage = false
+    /// A boolean value indicating whether the view model is currently fetching the next page of commits.
+    @Published var isFetchingNextPage = false
     
     let repository: RepositoryItem
     
@@ -23,8 +25,6 @@ class CommitListViewModel: ObservableObject {
     
     /// The task responsible for fetching data. It's being used to cancel ongoing task if we need to fetch fresh data.
     private var fetchTask: Task<Void, Never>?
-    /// A boolean value indicating whether the view model is currently fetching the next page of commits.
-    private var isFetchingNextPage = false
     
     /// The response containing http headers and  commits  fetched from the GitHub API.
     private var commitsResponse: RestResponse<[CommitItem], GitHubResponseHeaders>?

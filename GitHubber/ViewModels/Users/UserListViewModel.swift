@@ -15,6 +15,8 @@ class UserListViewModel: ObservableObject {
     @Published var users = [UserItem]()
     /// Indicates whether the first page of users is currently being loaded.
     @Published var isLoadingFirstPage = false
+    /// Indicates whether the next page of users is currently being loaded.
+    @Published var isFetchingNextPage = false
     /// Indicates whether the empty state view is hidden.
     @Published var isEmptyStateViewHidden = true
     /// The title of the empty state view.
@@ -31,7 +33,6 @@ class UserListViewModel: ObservableObject {
     
     private var searchTask: Task<Void, Never>?
     private var nextPageTask: Task<Void, Never>?
-    private var isFetchingNextPage = false
     
     private var response: RestResponse<UsersSearchResponse, GitHubResponseHeaders>?
     
