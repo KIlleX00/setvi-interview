@@ -6,8 +6,9 @@ struct UserListView: View {
     
     var body: some View {
         List.init(viewModel.users) { user in
-            UserItemView(userItem: user)
-                .alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
+            NavigationLink(value: user) {
+                UserItemView(userItem: user)
+            }.alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
                 .onAppear(perform: {
                     viewModel.fetchNextPageIfNeeded(currentUser: user)
                 })
@@ -25,7 +26,9 @@ struct UserListView: View {
             .autocorrectionDisabled()
             .navigationTitle("Users")
             .navigationBarTitleDisplayMode(.inline)
-            .alert(viewModel: viewModel.alertViewModel)
+            .navigationDestination(for: UserItem.self, destination: { userItem in
+                RepositoryListView(viewModel: viewModel.repositoryListViewModel(for: userItem))
+            }).alert(viewModel: viewModel.alertViewModel)
     }
 }
 

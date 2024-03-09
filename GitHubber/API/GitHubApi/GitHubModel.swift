@@ -42,7 +42,7 @@ struct UsersSearchResponse: Codable {
 }
 
 /// A data model representing a user retrieved from the GitHub API.
-struct UserItem: Codable {
+struct UserItem: Codable, Hashable {
     let id: Int
     let login: String
     let avatarUrl: URL
@@ -59,7 +59,7 @@ struct Organization: Codable {
 }
 
 /// A data model representing a repository retrieved from the GitHub API.
-struct RepositoryItem: Codable {
+struct RepositoryItem: Codable, Hashable {
     let id: Int
     let name: String
     let language: String?

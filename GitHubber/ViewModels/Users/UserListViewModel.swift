@@ -73,6 +73,12 @@ class UserListViewModel: ObservableObject {
         
     }
     
+    // MARK: - Data source
+    
+    func repositoryListViewModel(for user: UserItem) -> RepositoryListViewModel {
+        RepositoryListViewModel(user: user, gitHubApi: gitHubApi)
+    }
+    
     // MARK: - Data fetch
     
     /// Fetches the first page of users based on the current search text.

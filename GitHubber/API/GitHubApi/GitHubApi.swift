@@ -146,6 +146,14 @@ enum GitHubApiError: Error {
 class GitHubMockedApi: GitHubApi {
     
     static let exampleUser = UserItem(id: 1, login: "Pera", avatarUrl: .init(string: "https://avatars.githubusercontent.com/u/11722390?v=4")!)
+    static let exampleRepository = RepositoryItem(id: 1, name: "Setvi-iOS", language: "Swift", stargazersCount: 1000)
+    static let exampleOrgs = [ Organization(id: 1, login: "Setvi"),
+                               Organization(id: 2, login: "Apple"),
+                               Organization(id: 3, login: "Google"),
+                               Organization(id: 4, login: "Microsoft"),
+                               Organization(id: 5, login: "Amazon"),
+                               Organization(id: 6, login: "Tesla"),
+                               Organization(id: 7, login: "Facbook") ]
     
     func searchUsers(with query: String, pageSize: Int) async throws -> RestResponse<UsersSearchResponse, GitHubResponseHeaders> {
         let userItems = [ UserItem(id: 1, login: "Pera", avatarUrl: .init(string: "https://avatars.githubusercontent.com/u/11722390?v=4")!),
@@ -156,7 +164,7 @@ class GitHubMockedApi: GitHubApi {
     }
     
     func organizations(for user: String, pageSize: Int) async throws -> RestResponse<[Organization], GitHubResponseHeaders> {
-        return .init(headers: .init(headers: .init()), content: [.init(id: 1, login: "Setvi")])
+        return .init(headers: .init(headers: .init()), content: GitHubMockedApi.exampleOrgs)
     }
     
     func repositories(for user: String, pageSize: Int) async throws -> RestResponse<[RepositoryItem], GitHubResponseHeaders> {
