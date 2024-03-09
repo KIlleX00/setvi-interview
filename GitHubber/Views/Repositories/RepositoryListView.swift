@@ -34,6 +34,7 @@ struct RepositoryListView: View {
             .navigationDestination(for: RepositoryItem.self, destination: { repository in
                 CommitListView(viewModel: viewModel.commitListViewModel(for: repository))
             }).alert(viewModel: viewModel.alertViewModel)
+            .animation(.easeIn, value: viewModel.repositories)
     }
 }
 

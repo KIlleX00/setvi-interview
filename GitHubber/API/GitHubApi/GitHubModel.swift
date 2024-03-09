@@ -67,13 +67,13 @@ struct RepositoryItem: Codable, Hashable {
 }
 
 /// A data model representing a commit retrieved from the GitHub API.
-struct CommitItem: Codable {
+struct CommitItem: Codable, Equatable {
     let sha: String
     let commit: Commit
     let author: UserItem?
     let committer: UserItem?
     
-    struct Commit: Codable {
+    struct Commit: Codable, Equatable {
         let message: String
     }
 }

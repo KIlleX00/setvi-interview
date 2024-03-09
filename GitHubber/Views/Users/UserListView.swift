@@ -29,6 +29,7 @@ struct UserListView: View {
             .navigationDestination(for: UserItem.self, destination: { userItem in
                 RepositoryListView(viewModel: viewModel.repositoryListViewModel(for: userItem))
             }).alert(viewModel: viewModel.alertViewModel)
+            .animation(.easeIn, value: viewModel.users)
     }
 }
 

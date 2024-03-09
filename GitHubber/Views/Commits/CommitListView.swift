@@ -29,6 +29,7 @@ struct CommitListView: View {
         }).navigationBarTitleDisplayMode(.inline)
             .navigationTitle(viewModel.repository.name)
             .alert(viewModel: viewModel.alertViewModel)
+            .animation(.easeIn, value: viewModel.commits)
     }
 }
 
