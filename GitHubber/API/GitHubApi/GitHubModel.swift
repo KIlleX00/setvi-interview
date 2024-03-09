@@ -46,6 +46,10 @@ struct UserItem: Codable {
     let id: Int
     let login: String
     let avatarUrl: URL
+    
+    func avatarUrl(for width: CGFloat, scale: CGFloat) -> URL {
+        avatarUrl.appending(queryItems: [.init(name: "s", value: "\(Int((width * scale).rounded()))")])
+    }
 }
 
 /// A data model representing a organization retrieved from the GitHub API.
@@ -72,4 +76,8 @@ struct CommitItem: Codable {
     struct Commit: Codable {
         let message: String
     }
+}
+
+struct GitHubError: Codable {
+    let message: String
 }

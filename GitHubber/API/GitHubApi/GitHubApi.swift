@@ -123,6 +123,13 @@ class GitHubRestApi: GitHubApi, RestApi {
         return urlRequest
     }
     
+    // MARK: - Error handling
+    
+    func extractError(from data: Data) -> (any Error)? {
+        guard let gitHubError = try? jsonDecoder.decode(GitHubError.self, from: data) else { return nil }
+        return GitHubApiError.requestFailed(message: gitHubError.message)
+    }
+    
 }
 
 /// An enumeration representing errors specific to the GitHub API.
@@ -131,10 +138,14 @@ enum GitHubApiError: Error {
     case invalidUrl
     /// An error indicating that the next page URL is missing in the response headers.
     case nextPageMissing
+    /// An error indicating that error has been returned by GitHub API.
+    case requestFailed(message: String)
 }
 
 /// A mock implementation of the `GitHubApi` protocol for testing purposes.
 class GitHubMockedApi: GitHubApi {
+    
+    static let exampleUser = UserItem(id: 1, login: "Pera", avatarUrl: .init(string: "https://avatars.githubusercontent.com/u/11722390?v=4")!)
     
     func searchUsers(with query: String, pageSize: Int) async throws -> RestResponse<UsersSearchResponse, GitHubResponseHeaders> {
         let userItems = [ UserItem(id: 1, login: "Pera", avatarUrl: .init(string: "https://avatars.githubusercontent.com/u/11722390?v=4")!),

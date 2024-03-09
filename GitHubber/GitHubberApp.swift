@@ -12,7 +12,9 @@ struct GitHubberApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(gitHubApi: gitHubApi)
+            NavigationStack {
+                UserListView(viewModel: UserListViewModel(gitHubApi: gitHubApi))
+            }
         }
     }
 }
