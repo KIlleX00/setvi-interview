@@ -10,6 +10,7 @@ struct RepositoryListView: View {
                 UserDetailsView(userItem: viewModel.user, organizations: viewModel.organizations)
                     .padding(8)
                     .listRowSeparator(.hidden)
+                    .animation(nil, value: viewModel.repositories)
             }
             
             if !viewModel.repositories.isEmpty {
