@@ -52,7 +52,6 @@ class UserListViewModel: ObservableObject {
             .assign(to: \.emptyStateDescription, on: self)
         
         cancellables += $searchText.handleEvents(receiveOutput: { [weak self] searchText in
-            guard !searchText.isEmpty else { return }
             self?.isLoadingFirstPage = true
         }).debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { [weak self] _ in self?.fetchFirstPageOfUsers() }
@@ -91,19 +90,16 @@ class UserListViewModel: ObservableObject {
         let searchText = searchText
         searchTask = Task { @MainActor [weak self] in
             guard let self else { return }
-            if searchText.isEmpty {
-                self.response = nil
-                self.users = []
-            } else {
-                do {
-                    let response = try await gitHubApi.searchUsers(with: searchText, pageSize: 30)
-                    guard !Task.isCancelled else { return }
-                    self.response = response
-                    self.users = response.content.items
-                } catch {
-                    guard !Task.isCancelled else { return }
-                    self.alertViewModel.showAlert(for: error)
-                }
+            // If we don't have a search query, show users with a large number of repositories.
+            let searchText = searchText.isEmpty ? "repos:>1000" : searchText
+            do {
+                let response = try await gitHubApi.searchUsers(with: searchText, pageSize: 30)
+                guard !Task.isCancelled else { return }
+                self.response = response
+                self.users = response.content.items
+            } catch {
+                guard !Task.isCancelled else { return }
+                self.alertViewModel.showAlert(for: error)
             }
             self.isLoadingFirstPage = false
         }
