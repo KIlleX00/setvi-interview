@@ -64,7 +64,7 @@ class UserListViewModel: ObservableObject {
     // MARK: - Actions
     
     /// Fetches the next page of users if the current user is one of the last 10 visible items.
-        /// - Parameter user: User that was alst displayed in the list.
+    /// - Parameter user: User that was last displayed in the list.
     func fetchNextPageIfNeeded(currentUser user: UserItem) {
         guard let index = users.firstIndex(where: { $0.id == user.id }),
               index >= users.count - 10 else { return }
