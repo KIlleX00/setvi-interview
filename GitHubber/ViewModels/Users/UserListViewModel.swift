@@ -51,9 +51,10 @@ class UserListViewModel: ObservableObject {
         cancellables +=  $searchText.map({ $0.isEmpty ? "Start typing to search for users" : "Please try a different search query" })
             .assign(to: \.emptyStateDescription, on: self)
         
-        cancellables += $searchText.handleEvents(receiveOutput: { [weak self] searchText in
-            self?.isLoadingFirstPage = true
-        }).debounce(for: 0.3, scheduler: DispatchQueue.main)
+        cancellables += $searchText.removeDuplicates()
+            .handleEvents(receiveOutput: { [weak self] searchText in
+                self?.isLoadingFirstPage = true
+            }).debounce(for: 0.3, scheduler: DispatchQueue.main)
             .sink { [weak self] _ in self?.fetchFirstPageOfUsers() }
     }
     
